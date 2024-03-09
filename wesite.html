@@ -1,0 +1,818 @@
+<!--DOCTYPE html-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== CSS ===== -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" />
+  <style>
+   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+/*===== VARIABLES CSS =====*/
+:root {
+  --header-height: 3rem;
+
+  /*===== Font weight =====*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*===== Colores =====*/
+  --dark-color: #141414;
+  --dark-color-light: #8a8a8a;
+  --dark-color-lighten: #f2f2f2;
+  --white-color: #fff;
+
+  /*===== Font and typography =====*/
+  --body-font: "Poppins", sans-serif;
+  --big-font-size: 1.25rem;
+  --bigger-font-size: 1.5rem;
+  --biggest-font-size: 2rem;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 0.938rem;
+  --smaller-font-size: 0.813rem;
+
+  /*===== Margenes =====*/
+  --mb-1: 0.5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+
+  /*===== z index =====*/
+  --z-fixed: 100;
+
+  /*===== Rotate img =====*/
+  --rotate-img: rotate(-30deg);
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --big-font-size: 1.5rem;
+    --bigger-font-size: 2rem;
+    --biggest-font-size: 3rem;
+    --normal-font-size: 1rem;
+    --smaller-font-size: 0.875rem;
+  }
+}
+
+/*===== BASE =====*/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  color: var(--dark-color);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--dark-color);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*===== CLASS CSS ===== */
+.section {
+  padding: 5rem 0 2rem;
+}
+
+.section-title {
+  position: relative;
+  font-size: var(--big-font-size);
+  margin-bottom: var(--mb-4);
+  text-align: center;
+  letter-spacing: 0.1rem;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  width: 56px;
+  height: 0.18rem;
+  top: -1rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: var(--dark-color);
+}
+
+/*===== LAYOUT =====*/
+.bd-grid {
+  max-width: 1024px;
+  display: grid;
+  grid-template-columns: 100%;
+  column-gap: 2rem;
+  width: calc(100% - 2rem);
+  margin-left: var(--mb-2);
+  margin-right: var(--mb-2);
+}
+
+.header-1 {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--dark-color-lighten);
+}
+
+/*===== NAV =====*/
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .nav__menu {
+    position: fixed;
+    top: var(--header-height);
+    left: -100%;
+    width: 70%;
+    height: 100vh;
+    padding: 2rem;
+    background-color: var(--white-color);
+    transition: 0.5s;
+  }
+
+  .nav__item {
+    margin-bottom: var(--mb-4);
+  }
+
+  .nav__logo {
+    font-weight: var(--font-semi-bold);
+  }
+
+  nav__toggle,
+  .nav__shop {
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+}
+/*Show menu*/
+.show {
+  left: 0;
+}
+/*Active link*/
+.active {
+  position: relative;
+}
+
+.active::before {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 45%;
+  width: 4px;
+  height: 4px;
+  background-color: var(--dark-color);
+  border-radius: 50%;
+}
+
+/*Change color header*/
+
+.scroll-header {
+  background-color: var(--white-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/*===== HOME =====*/
+.home {
+  background-color: var(--dark-color-lighten);
+  overflow: hidden;
+}
+
+.home__container {
+  height: calc(100vh - var(--header-height));
+}
+
+.home__book {
+  position: relative;  
+  mix-blend-mode: multiply;
+  display: flex;
+
+  justify-content: center;
+  align-self: center;
+}
+
+.home__shape {
+  width: 220px;
+  height: 220px;
+  background-color: var(--dark-color);
+  border-radius: 50%;
+}
+
+.home__img {
+  position: absolute;
+  top: 10px;
+  left: 40px;
+  width: 275px;
+  transform: var(--rotate-img);
+}
+
+.home__new {
+  display: block;
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: var(--mb-2);
+}
+
+.home__title {
+  font-size: var(--bigger-font-size);
+  margin-bottom: var(--mb-1);
+}
+
+.home__description {
+  margin-bottom: var(--mb-6);
+}
+
+/*BUTTONS*/
+.button {
+  display: inline-block;
+  background-color: var(--dark-color);
+  color: var(--white-color);
+  padding: 1.125rem 2rem;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+}
+
+.button:hover {
+  transform: translateY(-0.25rem);
+}
+
+.button-light {
+  display: inline-flex;
+  color: var(--dark-color);
+  font-weight: var(--font-bold);
+  align-items: center;
+}
+
+.button-icon {
+  font-size: 1.25rem;
+  margin-left: var(--mb-1);
+  transition: 0.3s;
+}
+
+.button-light:hover .button-icon {
+  transform: translateX(0.25rem);
+}
+
+/*===== about us =====*/
+.about us__font {
+  
+  font-family: 'Arial', sans-serif;
+}
+
+/*===== COLLECTION =====*/
+
+.collection__container {
+  row-gap: 2rem;
+  justify-content: center;
+}
+
+.collection__card {
+  position: relative;
+  display: flex;
+  height: 328px;
+  background-color: var(--dark-color-lighten);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+}
+
+.collection__data {
+  align-self: flex-end;
+}
+
+.collection__name {
+  font-size: var(--bigger-font-size);
+  margin-bottom: 0.25rem;
+}
+
+.collection_description {
+  margin-bottom: var(--mb-2);
+}
+
+.collection__card:hover {
+  transform: translateY(-0.5rem);
+}
+
+/*===== book  =====*/
+.book__container {
+       display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .book {
+            text-align: center;
+        }
+
+        .book__img {
+            width: 150px; /* Set the desired width */
+            height: 200px; /* Set the desired height */
+            object-fit: cover;
+            margin-bottom: 10px; /* Add some margin between books */
+        }
+
+/*===== OFFER =====*/
+.offer__container {
+  grid-template-columns: 55% 45%;
+  column-gap: 0;
+  background-color: var(--dark-color-lighten);
+  border-radius: 0.5rem;
+  justify-content: center;
+}
+
+.offer__data {
+  padding: 4rem 0 4rem 1.5rem;
+}
+
+.offer__title {
+  font-size: var(--biggest-font-size);
+  margin-bottom: 0.25rem;
+}
+
+.offer__description {
+  margin-bottom: var(--mb-3);
+}
+
+.offer__img {
+object-fit: cover; 
+  width: 100%; 
+  height: 100%; 
+  border-radius: 0.5rem;}
+
+/*===== NEW COLLECTION  =====*/
+.new__container {
+  row-gap: 2rem;
+}
+
+.new__mens {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--dark-color-lighten);
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.new__mens-img {
+  width: 276px;
+  margin-bottom: var(--mb-3);
+}
+
+.new__title {
+  font-size: var(--bigger-font-size);
+  margin-bottom: 0.25rem;
+}
+
+.new__preci {
+  display: block;
+  margin-bottom: var(--mb-3);
+}
+
+.new__manga {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.new__manga-card {
+  position: relative;
+  padding: 3.5rem 1.5rem;
+  background-color: var(--dark-color-lighten);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.new__manga-img {
+  width: 220px;
+}
+
+.new__manga-overlay {
+  position: absolute;
+  left: 0;
+  bottom: -100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(138, 138, 138, 0.3);
+  transition: 0.3s;
+}
+
+.new__manga-card:hover .new__manga-overlay {
+  bottom: 0;
+}
+
+/*===== NEWSLETTER =====*/
+.newsletter__container {
+  background-color: var(--dark-color);
+  color: var(--white-color);
+  padding: 2rem 0.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.newsletter__title {
+  font-size: var(--bigger-font-size);
+  margin-bottom: mb2;
+}
+
+.newsletter__description {
+  margin-bottom: var(--mb-5);
+}
+
+.newsletter__subscribe {
+  display: flex;
+  column-gap: 0.5rem;
+  background-color: var(--white-color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.newsletter__input {
+  outline: none;
+  border: none;
+  width: 90%;
+  font-size: var(--normal-font-size);
+}
+
+.newsletter__input::placeholder {
+  color: var(--dark-color);
+  font-family: body-font;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+/*===== FOOTER =====*/
+.footer__container {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.footer__box {
+  margin-bottom: var(--mb-4);
+}
+
+.footer__title {
+  font-size: var(--big-font-size);
+}
+
+.footer__link {
+  display: block;
+  width: max-content;
+  margin-bottom: var(--mb-1);
+}
+
+.footer__social {
+  font-size: 1.5rem;
+  margin-right: 1.25rem;
+}
+
+.footer__copy {
+  padding-top: 3rem;
+  font-size: var(--smaller-font-size);
+  color: var(--dark-color-light);
+  text-align: center;
+}
+
+/* ===== MEDIA QUERIES=====*/
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0;
+  }
+
+  .section {
+    padding: 7rem 0;
+  }
+
+  .section-title::after {
+    width: 76px;
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 1.5rem);
+  }
+
+  .nav__menu {
+    margin-left: auto;
+  }
+
+  .nav__list {
+    display: flex;
+  }
+
+  .nav__item {
+    margin-left: var(--mb-6);
+    margin-bottom: 0;
+  }
+
+  .nav__toggle {
+    display: none;
+  }
+
+  .home__container {
+    height: 100vh;
+    grid-template-columns: max-content max-content;
+    justify-content: center;
+    align-items: center;
+  }
+  .home__book {
+    order: 1;
+  }
+  .home__shape {
+    width: 376px;
+    height: 376px;
+  }
+  .home__img {
+    width: 470px;
+    top: 3.5rem;
+    right: 0;
+    left: -3rem;
+  }
+}
+
+  </style>
+
+  <!-- ===== BOX ICONS ===== -->
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+
+  <title>The book cellar </title>
+</head>
+
+<body>
+   <!--===== HEADER =====-->
+  <header class="header-1" id="header">
+    <nav class="nav bd-grid">
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="bx bxs-grid"></i>
+      </div>
+
+      <a href="#" class="nav__logo">@The Book Cellar</a>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+          <li class="nav__item"><a href="#about us" class="nav__link">about us</a></li>
+          <li class="nav__item"><a href="#book" class="nav__link">books</a></li>
+          <li class="nav__item"><a href="#new" class="nav__link">New</a></li>
+          <li class="nav__item"><a href="#./shop.html" class="nav__link">Shop</a></li>
+        </ul>
+      </div>
+
+      <div class="nav__shop">
+        <i class='bx bx-shopping-bag'></i>
+      </div>
+    </nav>
+  </header>
+
+  <main class="l-main">
+    <!--===== HOME =====-->
+    <section class="home" id="home">
+      <div class="home__container bd-grid">
+        <div class="home__book">
+          <div class="home__shape"></div>
+          <img src="https://th.bing.com/th/id/OIP.A-AKWTAwkLvRqq2NWJFw6QAAAA?w=170&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="" class="home__img">
+        </div>
+
+          <div class="home__data">
+            <span class="home__new">New in</span>
+            <h1 class="home__title">hunger games </h1>
+	    <p class="home__new">by <br>suzanne collinsS</p><br>
+
+              <p class="home__description">Explore the world of books</p>
+              <a href="#" class="button">Explore Now</a>
+          </div>
+        </div>
+    </section>
+
+    <!--===== about us =====-->
+    <section class="about us section" id="about us">
+      <h2 class="section-title">about us</h2>
+     
+       <h3><center> Welcome to The Book Cellar – Your Literary Haven!<center/><h3><br/>
+
+<p style="font-family: Arial, sans-serif;" >At The Book Cellar, we believe that each book has a story to tell, and we are dedicated to providing a haven for book enthusiasts and bibliophiles alike. Our bookstore is more than just a place to buy books; it's a sanctuary for those who find solace in the written word and embark on literary journeys with every turn of a page.</p>
+<br/>
+<p style="font-family: Arial, sans-serif;" >Founded with a passion for literature and a commitment to fostering a vibrant reading community, The Book Cellar aims to be more than just a retail space. We strive to curate a diverse collection of books, ranging from timeless classics to contemporary bestsellers, ensuring there's something for every reader's taste and preference.</p>
+<br/>
+<p style="font-family: Arial, sans-serif;" >What sets The Book Cellar apart is not just the vast array of books lining our shelves but the inviting ambiance that encourages you to linger, explore, and discover your next great read. Our cozy nooks and reading corners provide the perfect escape, allowing you to immerse yourself in the captivating worlds that authors create.</p>
+<br/>
+<p style="font-family: Arial, sans-serif;" >As ardent supporters of local authors and independent publishers, we take pride in showcasing hidden gems and unique literary voices. The Book Cellar is more than a bookstore; it's a community hub where book clubs gather, writers find inspiration, and readers connect over their shared love for the written word.</p>
+<br/>
+<p style="font-family: Arial, sans-serif;" >Our knowledgeable and passionate staff is always ready to assist you in finding the perfect book or offering recommendations based on your preferences. Whether you're a seasoned bookworm or a casual reader, The Book Cellar welcomes everyone to experience the joy of reading and the magic that comes with exploring the realms of imagination.</p>
+<br/>
+<p style="font-family: Arial, sans-serif;" >Join us on this literary adventure as we celebrate the power of storytelling and the joy that a well-loved book can bring. The Book Cellar is not just a bookstore; it's a haven for the literary soul.</p>
+<br/><br/>
+<p style="font-family: Arial, sans-serif;" ><center>Thank you for being a part of The Book Cellar community – where every book has a home and every reader finds their sanctuary.<center/></p>
+      </div>
+    </section>
+
+    <!--===== COLLECTION =====-->
+    <section class="collection section">
+      <div class="collection__container bd-grid">
+        <div class="collection__card">
+          <div class="collection__data">
+            <h3 class="collection__name">Enid Blyton</h3>
+            <p class="collection__description">New reads</p>
+            <a href="#" class="button-light">explore now <i class='bx bx-right-arrow-alt button-icon'></i></a>
+          </div>
+
+          <img src="https://www.booktrust.org.uk/globalassets/images/news-and-features/blogs-2018/08.-august/wtra-enid-blyton/enid-blyton-books-16x9.jpg?w=1200&h=676&quality=70&anchor=middlecenter" alt="" class="collection__img">
+        </div>
+
+          <div class="collection__card">
+            <div class="collection__data">
+              <h3 class="collection__name">chetan Bhagat</h3>
+              <p class="collection__description">New reads</p>
+              <a href="#" class="button-light">explore now
+                <i class='bx bx-right-arrow-alt button-icon'></i></a>
+            </div>
+
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq4yPe8d_oEPDBj-IEhZRr_XlZaNIezGAbfQ&usqp=CAU" alt="" class="collection__img">
+        </div>
+          </div>
+    </section>
+
+    <!--===== book  =====-->
+    <section class="book section" id="book">
+      <h2 class="section-title">books</h2>
+
+      <div class="book__container bd-grid">
+        <article class="book">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlp5VWqqY7x3ePO9XTZzM4XF44NivpNlK-tw&usqp=CAU" alt="" class="book__img">
+          <span class="book__name">5 point someone</span>
+          <span >$12.99</span>
+          <a href="" class="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+        </article>
+
+        <article class="book">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdnAUSjLajQZyFPbIVw4CwjF6a2IibvuuStg&usqp=CAU" alt="" class="book__img">
+          <span class="book__name">2 states</span>
+          <span >$12.99</span>
+          <a href="" class="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+        </article>
+
+        <article class="book">
+          <img src="https://m.media-amazon.com/images/I/41dsMrDb-nL._SL500_.jpg" alt="" class="book__img">
+          <span class="book__name">becoming</span>
+          <span >$12.99</span>
+          <a href="" class="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+        </article>
+
+        <article class="book">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR10jHOLYvx3UMoJBIWpflotGaXM_SOnuLpRA&usqp=CAU" alt="" class="book__img">
+          <span class="book__name">the christmas carol </span>
+          <span>$12.99</span>
+          <a href="" class="button-light">Add to Cart <i class='bx bx-right-arrow-alt button-icon'></i></a>
+        </article>
+      </div>
+    </section>
+
+    <!--===== OFFER =====-->
+    <section class="offer section">
+      <div class="offer__container bd-grid">
+        <div class="offer__data">
+          <h3 class="offer__title">25% OFF</h3>
+          <p class="offer__description">On all manga collection</p>
+          <a href="#" class="button">check out Now</a>
+        </div>
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDLiXRSS-aRHSP46b6Eg4DyxAKRm_OiZLv4w&usqp=CAU" alt="" class="offer__img">
+      </div>
+    </section>
+
+    <!--===== NEW COLLECTION =====-->
+    <section class="new section" id="new">
+      <h2 class="section-title">NEW COLLECTION</h2>
+
+      <div class="new__container bd-grid">
+        <div class="new__mens">
+          <img src="https://i.etsystatic.com/27448597/r/il/59120e/2835220320/il_570xN.2835220320_93zq.jpg" alt="" class="new__mens-img">
+          <h3 class="new__title">Manga</h3>
+          <span >From $7.99</span>
+          <a href="#" class="button-light">View Collection
+            <i class='bx bx-right-arrow-alt button-icon'></i></a>
+        </div>
+
+        <div class="new__manga">
+          <div class="new__manga-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqUWILmj3S6RuGwH-ssQtmexeVDCwxJRC_vQ&usqp=CAU" alt="" class="new__manga-img">
+            <div class="new__manga-overlay">
+              <a href="#" class="button">Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="new__manga-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNs18L8YcL0PWf1JzUKSVwzsimPIf_KUhNAw&usqp=CAU" alt="" class="new__manga-img">
+            <div class="new__manga-overlay">
+              <a href="#" class="button">Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="new__manga-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmtDnFMEASUJql1SaK5N90Se7uYPXE_xEqMg&usqp=CAU" alt="" class="new__manga-img">
+            <div class="new__manga-overlay">
+              <a href="#" class="button">Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="new__manga-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcINrpNgAMpaQ8iIkihv3wxGop0gwtK8krzQ&usqp=CAU" alt="" class="new__manga-img">
+            <div class="new__manga-overlay">
+              <a href="#" class="button">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--===== NEWSLETTER =====-->
+
+    <section class="newsletter section">
+      <div class="newsletter__container bd-grid">
+        <div>
+          <h3 class="newsletter__title">Subscribe and Get <br> 10% OFF</h3>
+            <p class="newsletter__description">Get 10% discount for all books</p>
+        </div>
+
+        <form action="" class="newsletter__subscribe">
+          <input type="text" placeholder="@email.com" class="newsletter__input">
+          <a href="#" class="button">Subscribe</a>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!--===== FOOTER =====-->
+  <footer class="footer section">
+    
+      <div class="footer__box">
+        <h3 class="footer__title">EXPLORE</h3>
+        <ul>
+          <li><a href="#home" class="footer__link">Home</a></li>
+          <li><a href="#about us" class="footer__link">about us</a></li>
+          <li><a href="#book" class="footer__link">book</a></li>
+          <li><a href="#new" class="footer__link">New</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__box">
+        <h3 class="footer__title">SUPPORT</h3>
+        <ul>
+          <li><a href="#" class="footer__link">Product Help</a></li>
+          <li><a href="#" class="footer__link">Customer Care</a></li>
+          <li><a href="#" class="footer__link">Authorized Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__box">
+        <a href="#" class="footer__social"><i class='bx bxl-facebook'></i></a>
+        <a href="#" class="footer__social"><i class='bx bxl-instagram'></i></a>
+        <a href="#" class="footer__social"><i class='bx bxl-twitter'></i></a>
+        <a href="#" class="footer__social"><i class='bx bxl-youtube'></i></a>
+      </div>
+    </div>
+
+    <p class="footer__copy"> &#169;2024 sahithi bathula. All rights reserved </p>
+  </footer>
+
+ </body>
+
+</html>
